@@ -12,29 +12,29 @@ global.APIKeys = {
 }
 
 // Other
-global.namabot = ['ZxynBot']
-global.namaowner = ['Yosa Ardn']
-global.owner = ['6283149781035']
-global.premium = ['6283149781035']
-global.packname = 'ZxynBot'
-global.author = 'WhatsApp Bot'
+global.namabot = ['ZyKuan-Kun']
+global.namaowner = ['Zykuan']
+global.owner = ['628979440862']
+global.premium = ['6287881508547']
+global.packname = 'ZyKuan-Kun'
+global.author = 'Zykuan|wa.me/6282133532380'
 global.sessionName = 'zxyn'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
 global.mess = {
-    success: '✓ Success',
-    admin: 'Fitur Khusus Admin Group!',
-    botAdmin: 'Bot Harus Menjadi Admin Terlebih Dahulu!',
-    owner: 'Fitur Khusus Owner Bot',
+    success: 'Succes nih',
+    admin: 'Fitur Admin Group, lu bukan admin gausah make dehh',
+    botAdmin: 'Jadiin Bot admin, nanti bisa xixixi',
+    owner: 'Fitur Khusus Zykuan-Kun',
     group: 'Fitur Digunakan Hanya Untuk Group!',
     private: 'Fitur Digunakan Hanya Untuk Private Chat!',
     bot: 'Fitur Khusus Pengguna Nomor Bot',
-    wait: 'Loading...',
-    endLimit: 'Limit Harian Anda Telah Habis, Limit Akan Direset Setiap Jam 12',
+    wait: 'Loading, Sabar anj...',
+    endLimit: 'Limit lu habis cokk, Limit Akan Direset Setiap Jam 12',
 }
 global.limitawal = {
     premium: "Infinity",
-    free: 100
+    free: 50
 }
 global.thumb = fs.readFileSync('./lib/zxyn.jpg')
 global.visoka = { url: 'https://telegra.ph/file/15209657f9d4f59c7ca1e.mp4' }
