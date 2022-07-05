@@ -14,8 +14,8 @@ global.APIKeys = {
 // Other
 global.namabot = ['ZyKuan-Kun']
 global.namaowner = ['Zykuan']
-global.owner = ['628979440862']
-global.premium = ['6287881508547']
+global.owner = ['628979440862''6287881508547']
+global.premium = ['6287881508547''628979440862']
 global.packname = 'ZyKuan-Kun'
 global.author = 'Zykuan|wa.me/6282133532380'
 global.sessionName = 'zxyn'
@@ -34,7 +34,7 @@ global.mess = {
 }
 global.limitawal = {
     premium: "Infinity",
-    free: 50
+    free: 35
 }
 global.thumb = fs.readFileSync('./lib/zxyn.jpg')
 global.visoka = { url: 'https://telegra.ph/file/15209657f9d4f59c7ca1e.mp4' }
