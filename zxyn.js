@@ -1,7 +1,8 @@
 /**
    * Recode By ZxynOfc
-   * Contact Me on wa.me/6283149781035
-   * Follow https://github.com/YosaArdn
+   * Recode back oleh ArullOfc
+   * Contact Me on wa.me/6285822347348
+   * Follow https://github.com/Warikrr
    * Base Dika Ardnt
    * Jangan Diubah Author Nya
 */
@@ -60,7 +61,7 @@ module.exports = zxyn = async (zxyn, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
-        var prefix = prefa ? /^[Â°â€¢Ã·Ã—Â¶Â£Â¢â‚¬Â¥Â®â„¢+_=|~!?@#$%^&.Â©^]/gi.test(body) ? body.match(/^[Â°â€¢Ã·Ã—Â¶Â£Â¢â‚¬Â¥Â®â„¢+_=|~!?@#$%^&.Â©^]/gi)[0] : "" : prefa ?? global.prefix
+        var prefix = prefa ? /^[°•÷×¶£¢€¥®™+_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•÷×¶£¢€¥®™+_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
@@ -76,25 +77,25 @@ module.exports = zxyn = async (zxyn, m, chatUpdate, store) => {
         
         const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
         if(time2 < "23:59:00"){
-        var ucapanWaktu = 'Selamat Malam '
+        var ucapanWaktu = 'Konbanwaa Oniichan/Oneechan'
 }
         if(time2 < "19:00:00"){
-        var ucapanWaktu = 'Selamat Petang '
+        var ucapanWaktu = 'Konbanwaa '
 }
         if(time2 < "18:00:00"){
-        var ucapanWaktu = 'Selamat Sore '
+        var ucapanWaktu = 'Konnichiwa '
 }
         if(time2 < "15:00:00"){
-        var ucapanWaktu = 'Selamat Siang '
+        var ucapanWaktu = 'Konnichiwa '
 }
         if(time2 < "10:00:00"){
-        var ucapanWaktu = 'Selamat Pagi '
+        var ucapanWaktu = 'Ohayouu '
 }
         if(time2 < "05:00:00"){
-        var ucapanWaktu = 'Selamat Subuh '
+        var ucapanWaktu = 'Ohayouu'
 }
         if(time2 < "03:00:00"){
-        var ucapanWaktu = 'Selamat Tengah Malam '
+        var ucapanWaktu = 'Baka!! Tidur udah malam'
 }
 	
         // Group
@@ -111,7 +112,7 @@ module.exports = zxyn = async (zxyn, m, chatUpdate, store) => {
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
             let user = global.db.data.users[m.sender]
             if (typeof user !== 'object') global.db.data.users[m.sender] = {}
-            if (user) {ini 
+            if (user) {
                 if (!isNumber(user.afkTime)) user.afkTime = -1
                 if (!('afkReason' in user)) user.afkReason = ''
                 if (!isNumber(user.limit)) user.limit = limitUser
@@ -125,28 +126,28 @@ module.exports = zxyn = async (zxyn, m, chatUpdate, store) => {
             if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
             if (chats) {
                 if (!('mute' in chats)) chats.mute = false
-                if (!('antilink' in chats)) chats.antilink = false
+                if (!('antilink' in chats)) chats.antilink = true
             } else global.db.data.chats[m.chat] = {
                 mute: false,
-                antilink: false,
+                antilink: true,
             }
 		
 	    let setting = global.db.data.settings[botNumber]
             if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 	    if (setting) {
 		if (!isNumber(setting.status)) setting.status = 0
-		if (!('autobio' in setting)) setting.autobio = false
-		if (!('templateImage' in setting)) setting.templateImage = true
+		if (!('autobio' in setting)) setting.autobio = true
+		if (!('templateImage' in setting)) setting.templateImage = false
 		if (!('templateVideo' in setting)) setting.templateVideo = false
-		if (!('templateGif' in setting)) setting.templateGif = false
+		if (!('templateGif' in setting)) setting.templateGif = true
 		if (!('templateMsg' in setting)) setting.templateMsg = false
 		if (!('templateLocation' in setting)) setting.templateLocation = false
 	    } else global.db.data.settings[botNumber] = {
 		status: 0,
-		autobio: false,
-		templateImage: true,
+		autobio: true,
+		templateImage: false,
 		templateVideo: false,
-		templateGif: false,
+		templateGif: true,
 		templateMsg: false,
 		templateLocation: false,
 	    }
@@ -189,7 +190,7 @@ _sewa.expiredCheck(zxyn, sewa)
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await zxyn.setStatus(`${'Â© ZxynOfc'} | Runtime : ${runtime(uptime)}`)
+		await zxyn.setStatus(`${'©Jiikuan'} | Runtime : ${runtime(uptime)}`)
 		setting.status = new Date() * 1
 	    }
 	}
@@ -197,14 +198,14 @@ _sewa.expiredCheck(zxyn, sewa)
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(` ANTI LINK \n\nKamu terdeteksi mengirim link group, maaf kamu akan di kick !`)
-        if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
+        m.reply(` ANTI LINK \n\nAnata terdeteksi mengirim link group, maaf Anata akan di kick !`)
+        if (!isBotAdmins) return m.reply(`Jiikuan bukan admin T_T`)
         let gclink = (`https://chat.whatsapp.com/`+await zxyn.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
-        if (isgclink) return m.reply(`Ehh maaf gak jadi, karena kamu ngirim link group ini`)
-        if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
-        if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
+        if (isgclink) return m.reply(`Ehh Gomen'nasai gak jadi, karena kamu ngirim link group ini`)
+        if (isAdmins) return m.reply(`Ehh Gomen'nasai kamu admin`)
+        if (isCreator) return m.reply(`Ehh Gomen'nasai kamu ZyKuan-Kun`)
         zxyn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
@@ -260,7 +261,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklagu[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], ` Tebak Lagu \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], ` Tebak Lagu \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete tebaklagu[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
@@ -278,7 +279,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakgambar[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], ` Tebak Gambar \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], ` Tebak Gambar \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete tebakgambar[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
@@ -287,7 +288,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakkata[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], ` Tebak Kata \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], ` Tebak Kata \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete tebakkata[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
@@ -297,7 +298,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             jawaban = caklontong[m.sender.split('@')[0]]
 	    deskripsi = caklontong_desk[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], ` Cak Lontong \n\nJawaban Benar \n*${deskripsi}*\n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], ` Cak Lontong \n\nJawaban Benar \n*${deskripsi}*\n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete caklontong[m.sender.split('@')[0]]
 		delete caklontong_desk[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
@@ -307,7 +308,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebakkalimat[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], ` Tebak Kalimat \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], ` Tebak Kalimat \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete tebakkalimat[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
@@ -316,7 +317,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklirik[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], ` Tebak Lirik \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], ` Tebak Lirik \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete tebaklirik[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
@@ -325,7 +326,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaktebakan[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Tebak Tebakan' }, type: 1 }], ` Tebak Tebakan \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, 'Â© ZxynOfc', m)
+                await zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Tebak Tebakan' }, type: 1 }], ` Tebak Tebakan \n\nJawaban Benar \n\nIngin bermain lagi? tekan button dibawah`, '© ZxynOfc', m)
                 delete tebaktebakan[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
@@ -476,7 +477,7 @@ klik https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] }
             if (!afkTime || afkTime < 0) continue
             let reason = user.afkReason || ''
             m.reply(`
-Jangan tag dia!
+Baka!! Kare ni tagu o tsukenaide kudasai
 Dia sedang AFK ${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}
 Selama ${clockString(new Date - afkTime)}
 `.trim())
@@ -596,26 +597,26 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             case 'sc': {
                 anu = `*Base Ori : Dika Ardnt*
 https://github.com/DikaArdnt
-
-*Recode By : Yosa Ardn*
-https://github.com/YosaArdn`
+no
+*Recode By : ArullOfc*
+https://youtu.be/9OvUdX8Xuv0`
 let btn = [{
                                 urlButton: {
                                     displayText: 'Source Code',
-                                    url: 'https://github.com/DikaArdnt'
+                                    url: 'https://youtu.be/9OvUdX8Xuv0'
                                 }
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '©Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '©Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '©Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '©Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '©Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -675,7 +676,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklagu[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â© ZxynOfc', m)
+                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklagu[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '© ZxynOfc', m)
                     delete tebaklagu[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'gambar') {
@@ -688,7 +689,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakgambar[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â© ZxynOfc', m)
+                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakgambar[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '© ZxynOfc', m)
                     delete tebakgambar[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'kata') {
@@ -701,7 +702,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkata[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â© ZxynOfc', m)
+                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkata[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '© ZxynOfc', m)
                     delete tebakkata[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'kalimat') {
@@ -714,7 +715,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â© ZxynOfc', m)
+                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '© ZxynOfc', m)
                     delete tebakkalimat[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'lirik') {
@@ -727,7 +728,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â© ZxynOfc', m)
+                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '© ZxynOfc', m)
                     delete tebaklirik[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'lontong') {
@@ -741,7 +742,7 @@ let btn = [{
                     await sleep(60000)
                     if (caklontong.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â© ZxynOfc', m)
+                    zxyn.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '© ZxynOfc', m)
                     delete caklontong[m.sender.split('@')[0]]
 		    delete caklontong_desk[m.sender.split('@')[0]]
                     }
@@ -776,7 +777,7 @@ let btn = [{
             let buttons = [
                         { buttonId: 'jodohku', buttonText: { displayText: 'Jodohku' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, jawab, 'Â© ZxynOfc', m, {mentions: ments})
+                    await zxyn.sendButtonText(m.chat, buttons, jawab, '© Jiikuan', m, {mentions: ments})
             }
             break
             case 'jadian': {
@@ -791,7 +792,7 @@ let btn = [{
             let buttons = [
                         { buttonId: 'jadian', buttonText: { displayText: 'Jodohku' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, jawab, 'Â© ZxynOfc', m, {mentions: menst})
+                    await zxyn.sendButtonText(m.chat, buttons, jawab, '© Jiikuan', m, {mentions: menst})
             }
             break
             case 'react': {
@@ -984,7 +985,7 @@ let buttonsVote = [
 
             let buttonMessageVote = {
                 text: teks_vote,
-                footer: 'Â©ZyKuan-kun',
+                footer: '© Jiikuan',
                 buttons: buttonsVote,
                 headerType: 1
             }
@@ -1025,7 +1026,7 @@ ${vote[m.chat][2].map((v, i) => ` ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
             let buttonMessageUpvote = {
                 text: teks_vote,
-                footer: 'Â© ZyKuan-Kun',
+                footer: '© ZxynOfc',
                 buttons: buttonsUpvote,
                 headerType: 1,
                 mentions: menvote
@@ -1067,7 +1068,7 @@ ${vote[m.chat][2].map((v, i) => ` ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
             let buttonMessageDevote = {
                 text: teks_vote,
-                footer: 'Â© ZxynOfc',
+                footer: '© Jiikuan',
                 buttons: buttonsDevote,
                 headerType: 1,
                 mentions: menvote
@@ -1100,7 +1101,7 @@ ${vote[m.chat][2].map((v, i) => ` ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 *${prefix}hapusvote* - untuk menghapus vote
 
 
-Â©${zxyn.user.id}
+©${zxyn.user.id}
 `
 zxyn.sendTextWithMentions(m.chat, teks_vote, m)
 break
@@ -1124,7 +1125,7 @@ break
                         { buttonId: 'group open', buttonText: { displayText: 'Open' }, type: 1 },
                         { buttonId: 'group close', buttonText: { displayText: 'Close' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `Mode Group`, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `Mode Group`, '© Jiikuan', m)
 
              }
             }
@@ -1142,7 +1143,7 @@ break
                         { buttonId: 'editinfo open', buttonText: { displayText: 'Open' }, type: 1 },
                         { buttonId: 'editinfo close', buttonText: { displayText: 'Close' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `Mode Edit Info`, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `Mode Edit Info`, '© Jiikuan', m)
 
             }
             }
@@ -1164,7 +1165,7 @@ break
                         { buttonId: 'antilink on', buttonText: { displayText: 'On' }, type: 1 },
                         { buttonId: 'antilink off', buttonText: { displayText: 'Off' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `Mode Antilink`, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `Mode Antilink`, '© Jiikuan', m)
                 }
              }
              break
@@ -1175,17 +1176,17 @@ break
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].mute) return m.reply(`Sudah Aktif Sebelumnya`)
                 db.data.chats[m.chat].mute = true
-                m.reply(`${'Â© ZxynOfc'} telah di mute di group ini !`)
+                m.reply(`${'© ZxynOfc'} telah di mute di group ini !`)
                 } else if (args[0] === "off") {
                 if (!db.data.chats[m.chat].mute) return m.reply(`Sudah Tidak Aktif Sebelumnya`)
                 db.data.chats[m.chat].mute = false
-                m.reply(`${'Â© ZxynOfc'} telah di unmute di group ini !`)
+                m.reply(`${'© ZxynOfc'} telah di unmute di group ini !`)
                 } else {
                  let buttons = [
                         { buttonId: 'mute on', buttonText: { displayText: 'On' }, type: 1 },
                         { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `Mute Bot`, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `Mute Bot`, '© ZxynOfc', m)
                 }
              }
              break
@@ -1220,7 +1221,7 @@ break
                 ]
                 },
                 ]
-                zxyn.sendListMsg(m.chat, `Please select the following Ephemeral Options List !`, 'Â© ZxynOfc', `Hello Admin ${groupMetadata.subject}`, `Click Here`, sections, m)
+                zxyn.sendListMsg(m.chat, `Please select the following Ephemeral Options List !`, '© ZxynOfc', `Hello Admin ${groupMetadata.subject}`, `Click Here`, sections, m)
                 }
             }
             break
@@ -1248,7 +1249,7 @@ break
                                 }, {
                                 urlButton: {
                                     displayText: 'Group Bot',
-                                    url: 'https://chat.whatsapp.com/LlJzTGiOZHi9njJoZuXVn8'
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -1267,7 +1268,7 @@ break
                                 }
                             }]
                       let txt = ` Broadcast Bot \n\n${text}`
-                      zxyn.send5ButImg(i, txt, 'Â© ZxynOfc', global.thumb, btn)
+                      zxyn.send5ButImg(i, txt, '© ZxynOfc', global.thumb, btn)
                     }
                 m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
             }
@@ -1287,7 +1288,7 @@ break
                                 }, {
                                 urlButton: {
                                     displayText: 'Group Bot',
-                                    url: 'https://chat.whatsapp.com/LlJzTGiOZHi9njJoZuXVn8'
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -1306,7 +1307,7 @@ break
                                 }
                             }]
                       let txt = ` Broadcast Bot \n\n${text}`
-                      zxyn.send5ButImg(yoi, txt, 'Â© ZxynOfc', global.thumb, btn)
+                      zxyn.send5ButImg(yoi, txt, '© Jiikuan', global.thumb, btn)
 		}
 		m.reply('Sukses Broadcast')
             }
@@ -1501,7 +1502,7 @@ break
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            zxyn.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${'Â© ZxynOfc'}.mp3`}, { quoted : m })
+            zxyn.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${'© ZxynOfc'}.mp3`}, { quoted : m })
             }
             break
             case 'tovn': case 'toptt': {
@@ -1604,7 +1605,7 @@ break
                     caption: `*------- GIMAGE SEARCH -------*
  *Query* : ${text}
  *Media Url* : ${images}`,
-                    footer: 'Â© ZxynOfc',
+                    footer: '© Jiikuan',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1634,7 +1635,7 @@ break
  Channel : ${anu.author.url}
  Description : ${anu.description}
  Url : ${anu.url}`,
-                    footer: 'Â© ZxynOfc',
+                    footer: '© Jiikuan',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1715,7 +1716,7 @@ break
                 let buttonMessage = {
                     image: { url: 'https://coffee.alexflipnote.dev/random' },
                     caption: ` Random Coffe`,
-                    footer: 'Â© ZxynOfc',
+                    footer: '© ZxynOfc',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1733,7 +1734,7 @@ break
                 let buttonMessage = {
                     image: { url: result.image[0] },
                     caption: ` Title : ${result.title}\n Category : ${result.type}\n Detail : ${result.source}\n Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
-                    footer: 'Â© ZxynOfc',
+                    footer: '© Jiikuan',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1751,7 +1752,7 @@ break
                 let buttonMessage = {
                     image: { url: result.image },
                     caption: ` Title : ${result.title}\n Source : ${result.source}\n Media Url : ${result.image}`,
-                    footer: 'Â© ZxynOfc',
+                    footer: '© Jiikuan',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -2271,7 +2272,7 @@ break
  Url : ${anu.media[0]}
 Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan command ytmp3/ytmp4 dengan url diatas
 `,
-			footer: 'Â© ZxynOfc',
+			footer: '© Jiikuan',
 			buttons,
 			headerType: 4
 		    }
@@ -2500,7 +2501,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
 				let buttons = [
                     { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
                 ]
-                zxyn.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await zxyn.getName(m.sender)} Welcome To Anonymous Chat\n\nKlik Button Dibawah Ini Untuk Mencari Partner\`\`\``, 'Â© ZxynOfc', m)
+                zxyn.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await zxyn.getName(m.sender)} Welcome To Anonymous Chat\n\nKlik Button Dibawah Ini Untuk Mencari Partner\`\`\``, '© ZxynOfc', m)
             }
 			break
             case 'keluar': case 'leave': {
@@ -2527,7 +2528,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `\`\`\`Kamu Masih Berada Di dalam Sesi Anonymous, Tekan Button Dibawah Ini Untuk Menghentikan Sesi Anonymous Anda\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `\`\`\`Kamu Masih Berada Di dalam Sesi Anonymous, Tekan Button Dibawah Ini Untuk Menghentikan Sesi Anonymous Anda\`\`\``, '© ZxynOfc', m)
                     throw false
                 }
                 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
@@ -2536,10 +2537,10 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                         { buttonId: 'next', buttonText: { displayText: 'Skip' }, type: 1 },
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '© ZxynOfc', m)
                     room.b = m.sender
                     room.state = 'CHATTING'
-                    await zxyn.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '© ZxynOfc', m)
                 } else {
                     let id = + new Date
                     this.anonymous[id] = {
@@ -2557,7 +2558,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, '© ZxynOfc', m)
                 }
                 break
             }
@@ -2581,10 +2582,10 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                         { buttonId: 'next', buttonText: { displayText: 'Skip' }, type: 1 },
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '© ZxynOfc', m)
                     room.b = m.sender
                     room.state = 'CHATTING'
-                    await zxyn.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '© ZxynOfc', m)
                 } else {
                     let id = + new Date
                     this.anonymous[id] = {
@@ -2602,7 +2603,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await zxyn.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, 'Â© ZxynOfc', m)
+                    await zxyn.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, '© Jiikuan', m)
                 }
                 break
             }
@@ -2851,7 +2852,7 @@ let capt = ` Title: ${judul}
                 ]
                 },
                 ]
-                zxyn.sendListMsg(m.chat, `Please select the menu you want to change!`, 'Â© ZxynOfc', `Hello Owner !`, `Click Here`, sections, m)
+                zxyn.sendListMsg(m.chat, `Please select the menu you want to change!`, '© ZxynOfc', `Hello Owner !`, `Click Here`, sections, m)
                 }
             }
             break
@@ -2902,48 +2903,38 @@ anu = ` *SEWABOT* 
 
 [ *PAYMENT* ]
   SHOOPEPAY
-
+`
 let btn = [{
                                 quickReplyButton: {
-                                    displayText: 'Gopay',
-                                    id: 'gopay'
-                                }
-                                }, {
-                                quickReplyButton: {
-                                    displayText: 'Dana',
-                                    id: 'dana'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Pulsa',
-                                    id: 'pulsa'
+                                    displayText: 'Shoopepay',
+                                    id: 'shoopepay'
                                 }  
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
             break
-case 'Shoopepay': {
-                zxyn.sendMessage(m.chat, { image: { url: 'https://postimg.cc/p5Ch2fH1' }, caption: `Shoopepay` }, { quoted: m })
+case 'shoopepay': {
+m.reply('08979440862')
 }
 break
 // Button List
 case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
-                    title: `${ucapanWaktu} ${pushname}\n\nJika Kamu Menemukan Semacam Bug Atau Kesalahan Harap Lapor Ke Owner Agar Segera Di Perbaiki!\n`,
+                    title: `${ucapanWaktu} ${pushname}\n\nJika Kamu Menemukan Kesalahan Jangan Nanya Ke Owner, Mungkin Itu gara² Lu Sendiri\n`,
                     description: "*Klik Tombol Dibawah Untuk Melihat Menu Yang Tersedia*",
                     buttonText: "KLIK DISINI",
-                    footerText: "ZyKuan-Kun",
+                    footerText: "Jiikuan",
                     listType: "SINGLE_SELECT",
                     sections: [{
 								"title": "All Menu Bot",
@@ -3374,12 +3365,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak Ada'
+                                    url: 'https://youtu.be/9OvUdX8Xuv0'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3399,15 +3390,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3451,12 +3442,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3476,15 +3467,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3537,12 +3528,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak Ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3562,15 +3553,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3610,12 +3601,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak Ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3635,15 +3626,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3690,12 +3681,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak Ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3715,15 +3706,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3765,12 +3756,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak Ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3790,15 +3781,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3843,12 +3834,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3868,15 +3859,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -3939,12 +3930,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3964,15 +3955,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4016,12 +4007,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4041,15 +4032,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4090,12 +4081,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4115,15 +4106,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4169,12 +4160,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4194,15 +4185,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4264,12 +4255,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4289,15 +4280,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4347,12 +4338,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4372,15 +4363,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4422,12 +4413,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak Ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4447,15 +4438,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4495,12 +4486,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4520,15 +4511,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4564,12 +4555,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4589,15 +4580,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4634,12 +4625,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4659,15 +4650,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4710,12 +4701,12 @@ anu = `${ucapanWaktu} ${pushname}
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4735,30 +4726,30 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
                    
             case 'menu': case 'help': case '?': {
-                anu = `${ucapanWaktu} ${pushname}\n\nSaya ${global.namabot}, Bot Ini Adalah Beta Multi Device WhatsApp.\n\n${global.namabot} Adalah Hasil Recode ${global.namaowner} Menggunakan Base Dari Dika Ardnt (Hisoka-Morou).\n\nJika Kamu Menemukan Semacam Bug Atau Kesalahan Harap Lapor Ke Owner Agar Segera Di Perbaiki`
+                anu = `${ucapanWaktu} ${pushname}\n\nSaya ${global.namabot}, Bot Ini Adalah Beta Multi Device WhatsApp.\n\n${global.namabot} Adalah Hasil Recode ${global.namaowner} Menggunakan sc dari ZxynOfc (YosaArdn).\n\nJika Kamu Menemukan Semacam Bug Atau Kesalahan Harap Lapor Ke Owner Agar Segera Di Perbaiki`
                 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtu.be/9OvUdX8Xuv0'
                                 }
                                 }, {
                                 urlButton: {
                                     displayText: 'Group Bot',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx''
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -4778,15 +4769,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4797,29 +4788,29 @@ anu = ` * DONASI *
   Pulsa : 08979440862
 
 
-*TERIMA KASIH BUAT YANG SUDAH MAU DONASI ><*`
+*ARIGATOGOZAIMASU BUAT YANG SUDAH MAU DONASI*`
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: '085822347348'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4845,7 +4836,9 @@ Perjualbelikan!
 
  : Boleh Masukin Ke Grup Saia
 Tidak?
- : Tergantung owner ZyKuan
+ : Untuk Masalah Memasukkan
+Bot Ke Dalam Grup Bisa
+Menghubungi Owner
 
  : Apakah Bot Ini Masih
 Menyimpan File Yang Saya Kirim?
@@ -4880,12 +4873,12 @@ Ini`
 let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -4905,15 +4898,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -4921,28 +4914,23 @@ let btn = [{
 case 'contributor': {
 	anu = `*THANKS TO :*
 
-Adiwajshing :
-https://github.com/Adiwajshing
-Dika Ardnt :
-https://github.com/DikaArdnt
-Fandy :
-https://github.com/NzrlAfndi
-Abuzz :
-https://github.com/Abuzzpoet
-Fax (Fardan)
-Sonel :
-https://github.com/sonelstore
+•Adiwajshing 
+•Dika Ardnt 
+•Fandy 
+•Abuzz 
+•Sonel 
+•ArullOfc
 Penyedia Rest Api :
 https://zenzapis.xyz`
 	let btn = [{
                                 urlButton: {
                                     displayText: 'Youtube',
-                                    url: 'Tidak ada'
+                                    url: 'https://youtube.com/channel/UC31AobZtVn1WxyM8h9gWC-w'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Group InfoBot Zykuan',
-                                    url: 'https://chat.whatsapp.com/E1Fk1nFmAwT8VMNk4WJ1lx'
+                                    displayText: 'Group Bot',
+                                    url: 'https://chat.whatsapp.com/F6CAAOhrORm1sPdq6cRKAS'
                                 }
                                 }, {
                                 quickReplyButton: {
@@ -4962,15 +4950,15 @@ https://zenzapis.xyz`
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        zxyn.send5ButImg(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn, global.thumb)
+                        zxyn.send5ButImg(m.chat, anu, '© Jiikuan', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        zxyn.send5ButGif(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButGif(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        zxyn.send5ButVid(m.chat, anu, 'Â© ZxynOfc', global.visoka, btn, global.thumb)
+                        zxyn.send5ButVid(m.chat, anu, '© Jiikuan', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        zxyn.send5ButMsg(m.chat, anu, 'Â© ZxynOfc', btn)
+                        zxyn.send5ButMsg(m.chat, anu, '© Jiikuan', btn)
                         } else if (setbot.templateLocation) {
-                        zxyn.send5ButLoc(m.chat, anu, 'Â© ZxynOfc', global.thumb, btn)
+                        zxyn.send5ButLoc(m.chat, anu, '© Jiikuan', global.thumb, btn)
                         }
                      }
             break
@@ -5053,4 +5041,3 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 })
-
