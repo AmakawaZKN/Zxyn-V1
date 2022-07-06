@@ -29,7 +29,7 @@ global.mess = {
     group: 'Fitur Digunakan Hanya Untuk Group!',
     private: 'Fitur Digunakan Hanya Untuk Private Chat!',
     bot: 'Fitur Khusus Pengguna Nomor Bot',
-    wait: 'Loading Onii-chan/Onee-chan ^,^',
+    wait: 'Loading Onii-chan/Onee-chan ><',
     endLimit: 'Limit lu habis cokk, Limit Akan Direset Setiap Jam 12',
 }
 global.limitawal = {
