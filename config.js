@@ -14,7 +14,7 @@ global.APIKeys = {
 // Other
 global.namabot = ['ZyKuan-Kun']
 global.namaowner = ['Zykuan']
-global.owner = ['628979440862''6287881508547']
+global.owner = ['628979440862']
 global.premium = ['6287881508547''628979440862']
 global.packname = 'ZyKuan-Kun'
 global.author = 'Zykuan|wa.me/6282133532380'
@@ -22,14 +22,14 @@ global.sessionName = 'zxyn'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
 global.mess = {
-    success: 'Succes nih',
-    admin: 'Fitur Admin Group, lu bukan admin gausah make dehh',
-    botAdmin: 'Jadiin Bot admin, nanti bisa xixixi',
-    owner: 'Fitur Khusus Zykuan-Kun',
+    success: 'Succes Onii-chan/Onee-chan ><',
+    admin: 'Baka!!, Khusus admin, Anata bukan admin',
+    botAdmin: 'Jadiin Jiikuan admin, baru bisa HAHAHA',
+    owner: 'Fitur Khusus Zykuan-Kun >//<',
     group: 'Fitur Digunakan Hanya Untuk Group!',
     private: 'Fitur Digunakan Hanya Untuk Private Chat!',
     bot: 'Fitur Khusus Pengguna Nomor Bot',
-    wait: 'Loading, Sabar anj...',
+    wait: 'Loading Onii-chan/Onee-chan ^,^',
     endLimit: 'Limit lu habis cokk, Limit Akan Direset Setiap Jam 12',
 }
 global.limitawal = {
